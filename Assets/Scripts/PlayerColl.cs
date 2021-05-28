@@ -82,18 +82,18 @@ public class PlayerColl : MonoBehaviour
         if (other.name == "Delay Moving Spike") {
 
             timer += Time.deltaTime;
-            if (timer >= timeWait - 0.5) {
+            if (timer >= timeWait - 1) {
                 DelayMovingSpike.transform.localPosition = new Vector3(-0.2f, DelayMovingSpike.transform.localPosition.y, DelayMovingSpike.transform.localPosition.z); 
                 ResetTimer(); 
             }
 
         }
 
-        Debug.Log(timer);
+        //Debug.Log(timer);
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        if (other.name == "Saw Stay" && other.name == "Delay Moving Spike") {
+        if (other.name == "Saw Stay" || other.name == "Delay Moving Spike") {
             ResetTimer(); 
         }
        
