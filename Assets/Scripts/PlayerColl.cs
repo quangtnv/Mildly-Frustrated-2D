@@ -14,6 +14,7 @@ public class PlayerColl : MonoBehaviour
     public GameObject DelaySaw;
     public GameObject DelayMovingSpike;
     public Tilemap Invisi;
+    public Transform playerPlace;
 
     public Collider2D box;
     public Collider2D round;
@@ -59,6 +60,10 @@ public class PlayerColl : MonoBehaviour
             Invisi.transform.localPosition = new Vector3(Invisi.transform.localPosition.x, Invisi.transform.localPosition.y, 0);
         }
 
+        if (other.name == "WHouse") {
+            FindObjectOfType<Manager>().finish();
+        }
+
         if (deathTrig.Contains(other.name)) {
             box.enabled = false;
             round.enabled = false;
@@ -83,7 +88,7 @@ public class PlayerColl : MonoBehaviour
 
             timer += Time.deltaTime;
             if (timer >= timeWait - 1) {
-                DelayMovingSpike.transform.localPosition = new Vector3(-0.2f, DelayMovingSpike.transform.localPosition.y, DelayMovingSpike.transform.localPosition.z); 
+                DelayMovingSpike.transform.position = new Vector3(playerPlace.position.x, DelayMovingSpike.transform.position.y, DelayMovingSpike.transform.position.z); 
                 ResetTimer(); 
             }
 

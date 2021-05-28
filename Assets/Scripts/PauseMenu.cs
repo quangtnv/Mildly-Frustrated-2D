@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     public void QuitButton() {
         Resume();
         SceneManager.LoadScene(0);
+        Manager.deathCount = 0;
     }
 
     public void ResumeButton() {
