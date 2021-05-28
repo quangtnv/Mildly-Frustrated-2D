@@ -61,6 +61,7 @@ public class PlayerColl : MonoBehaviour
         }
 
         if (other.name == "WHouse") {
+            Manager.isWin = true;
             FindObjectOfType<Manager>().finish();
         }
 

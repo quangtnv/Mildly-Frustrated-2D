@@ -4,11 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class Manager : MonoBehaviour
 {
     private bool isEnded = false;
+    public static bool isWin = false;
     public static int deathCount = 0;
-    public Text deathText;
+    public GameObject pauseUI_script;
+    public GameObject pauseButton;
+    public GameObject finishMenu;
+    public GameObject movement;
+    //public TextMeshPro deathText;
     //public GameObject Player;
     //public Transform spawnpoint;
 
@@ -22,15 +28,26 @@ public class Manager : MonoBehaviour
     }
 
     public void finish() {
-        deathText.text = deathCount.ToString();
+        if (isWin) {
+            finishMenu.SetActive(true);
+            pauseUI_script.GetComponent<PauseMenu>().enabled = false;
+            movement.GetComponent<CharacterController2D>().enabled = false;
+            pauseButton.SetActive(false);
+        }
+        else {
+            finishMenu.SetActive(false);
+        }
+        
     }
 
     public void restartButton() {
+        finishMenu.SetActive(false);
         Restart();
         deathCount = 0;
     }
 
     public void quitButton() {
+        finishMenu.SetActive(false);
         SceneManager.LoadScene(0);
         deathCount = 0;
     }
