@@ -24,21 +24,21 @@ public class PlayerColl : MonoBehaviour
     public float stepSpeed;
     public float timeWait = 5.0f;
 
-    private Rigidbody2D sawBody;
+    //private Rigidbody2D sawBody;
     private Rigidbody2D spikeBody;
     private float timer = 0.0f;
     
     private string[] deathTrig = {"Saw", "Spikes", "Spike", "Spike_Up", "SpikeLeft", "SpikeRight"};
 
     private void Awake() {
-        sawBody = Saw.GetComponent<Rigidbody2D>();
+        //sawBody = Saw.GetComponent<Rigidbody2D>();
         spikeBody = Spike.GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         //Debug.Log(other.name);
         if (other.name == "SawTrigger") {
-            sawBody.velocity = Vector2.up * sawSpeed;
+            //sawBody.velocity = Vector2.up * sawSpeed;
             spikeBody.velocity = Vector2.right * sawSpeed;
         }
 
